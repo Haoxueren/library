@@ -11,7 +11,7 @@ public class IDCardHelper {
     /**
      * 根据省份检验用户的身份证号码是否有效
      */
-    private static boolean checkByProvince(String idCard) {
+    public static boolean checkByProvince(String idCard) {
         String regex = "(11|12|13|14|15|21|22|23|31|32|33|34|35|36|37|41|42|43|44|45|46|50|51|52|53|54|61|62|63|64|65|71|81|82)[0-9]{15}([0-9xX])";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(idCard);
