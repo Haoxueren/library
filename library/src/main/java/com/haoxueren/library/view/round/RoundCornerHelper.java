@@ -7,12 +7,40 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 
 /**
  * create by haomingliang on 2020/2/23
  */
 public class RoundCornerHelper {
+
+    public static Drawable getRoundDrawable(Drawable background, RoundAttributeHolder holder) {
+        // 为纯色背景添加圆角
+        if (background instanceof ColorDrawable) {
+            ColorDrawable colorDrawable = (ColorDrawable) background;
+            int color = colorDrawable.getColor();
+            GradientDrawable gradientDrawable = new GradientDrawable();
+            gradientDrawable.setColor(color);
+            RoundCornerHelper.setGradientDrawableRadius(gradientDrawable, holder);
+            return gradientDrawable;
+        }
+        // 为Shape背景添加圆角
+        if (background instanceof GradientDrawable) {
+            GradientDrawable gradientDrawable = (GradientDrawable) background;
+            RoundCornerHelper.setGradientDrawableRadius(gradientDrawable, holder);
+            return gradientDrawable;
+        }
+        // 为图片背景添加圆角
+        if (background instanceof BitmapDrawable) {
+            Bitmap bitmap = ((BitmapDrawable) background).getBitmap();
+            Bitmap roundBitmap = RoundCornerHelper.getRoundBitmap(bitmap, holder.radius);
+            return new BitmapDrawable(holder.context.getResources(), roundBitmap);
+        }
+        return background; // 均未处理，原路返回
+    }
 
     /**
      * 为GradientDrawable设置Radius

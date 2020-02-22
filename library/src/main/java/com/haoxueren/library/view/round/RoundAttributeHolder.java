@@ -10,10 +10,11 @@ import com.haoxueren.library.R;
  * 自定义圆角属性的统一管理对象
  */
 public class RoundAttributeHolder {
-
+    Context context;
     int radius, radiusTopLeft, radiusTopRight, radiusBottomLeft, radiusBottomRight;
 
     public RoundAttributeHolder(Context context, AttributeSet attrs) {
+        this.context = context;
         TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.RoundFrameLayout);
         radius = attributes.getDimensionPixelSize(R.styleable.RoundFrameLayout_radius, 0);
         radiusTopLeft = attributes.getDimensionPixelSize(R.styleable.RoundFrameLayout_radiusTopLeft, 0);
