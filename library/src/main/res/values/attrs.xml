@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RoundFrameLayout">
+        <attr name="radius" format="dimension" />
+        <attr name="radiusTopLeft" format="dimension" />
+        <attr name="radiusTopRight" format="dimension" />
+        <attr name="radiusBottomLeft" format="dimension" />
+        <attr name="radiusBottomRight" format="dimension" />
+    </declare-styleable>
+
+
+</resources>
