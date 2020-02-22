@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
  * 圆角矩形 FrameLayout
  * 1. 颜色背景支持自定义四个角的弧度
  * 2. 图片只支持radius属性，不支持对四个角分别定义
- *
+ * <p>
  * create by haomingliang on 2020/2/22
  */
 public class RoundFrameLayout extends FrameLayout {
@@ -20,10 +20,7 @@ public class RoundFrameLayout extends FrameLayout {
 
     public RoundFrameLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        RoundAttributeHolder holder = new RoundAttributeHolder(context, attrs);
-        Drawable background = this.getBackground();
-        Drawable roundDrawable = RoundCornerHelper.getRoundDrawable(background, holder);
-        this.setBackground(roundDrawable);
+        RoundCornerHelper.setRoundBackground(this, attrs);
     }
 
 

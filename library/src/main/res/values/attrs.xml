@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <attr name="radius" format="dimension" />
+    <attr name="radiusTopLeft" format="dimension" />
+    <attr name="radiusTopRight" format="dimension" />
+    <attr name="radiusBottomLeft" format="dimension" />
+    <attr name="radiusBottomRight" format="dimension" />
+
     <declare-styleable name="RoundFrameLayout">
-        <attr name="radius" format="dimension" />
-        <attr name="radiusTopLeft" format="dimension" />
-        <attr name="radiusTopRight" format="dimension" />
-        <attr name="radiusBottomLeft" format="dimension" />
-        <attr name="radiusBottomRight" format="dimension" />
+        <attr name="radius" />
+        <attr name="radiusTopLeft" />
+        <attr name="radiusTopRight" />
+        <attr name="radiusBottomLeft" />
+        <attr name="radiusBottomRight" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundLinearLayout">
+        <attr name="radius" />
+        <attr name="radiusTopLeft" />
+        <attr name="radiusTopRight" />
+        <attr name="radiusBottomLeft" />
+        <attr name="radiusBottomRight" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundRelativeLayout">
+        <attr name="radius" />
+        <attr name="radiusTopLeft" />
+        <attr name="radiusTopRight" />
+        <attr name="radiusBottomLeft" />
+        <attr name="radiusBottomRight" />
     </declare-styleable>
 
 

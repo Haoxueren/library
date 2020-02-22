@@ -1,5 +1,6 @@
 package com.haoxueren.library.view.round;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -11,13 +12,22 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.util.AttributeSet;
+import android.view.View;
 
 /**
  * create by haomingliang on 2020/2/23
  */
 public class RoundCornerHelper {
 
-    public static Drawable getRoundDrawable(Drawable background, RoundAttributeHolder holder) {
+    public static void setRoundBackground(View target, AttributeSet attrs) {
+        RoundAttributeHolder holder = new RoundAttributeHolder(target.getContext(), attrs);
+        Drawable background = target.getBackground();
+        Drawable roundDrawable = RoundCornerHelper.getRoundDrawable(background, holder);
+        target.setBackground(roundDrawable);
+    }
+
+    private static Drawable getRoundDrawable(Drawable background, RoundAttributeHolder holder) {
         // 为纯色背景添加圆角
         if (background instanceof ColorDrawable) {
             ColorDrawable colorDrawable = (ColorDrawable) background;
@@ -45,7 +55,7 @@ public class RoundCornerHelper {
     /**
      * 为GradientDrawable设置Radius
      */
-    public static void setGradientDrawableRadius(GradientDrawable drawable, RoundAttributeHolder holder) {
+    private static void setGradientDrawableRadius(GradientDrawable drawable, RoundAttributeHolder holder) {
         if (holder.radius > 0) {
             drawable.setCornerRadius(holder.radius);
         } else {
@@ -60,7 +70,7 @@ public class RoundCornerHelper {
     /**
      * 绘制圆角矩形图片
      */
-    public static Bitmap getRoundBitmap(Bitmap bitmap, int radius) {
+    private static Bitmap getRoundBitmap(Bitmap bitmap, int radius) {
         // 创建一个新的Bitmap
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
