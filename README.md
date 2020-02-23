@@ -20,3 +20,17 @@ Java8新特性相关的一些类，解决Android低版本不支持的问题。
 
 颜色背景或Shape背景支持分别设置四个角的radius，图片背景只支持设置总体radius。
 
+# Divider
+
+自定义控件：分割线，支持orientation设定为HORIZONTAL/VERTICAL
+
+# SpannableTextView
+
+集成了设置常用Span的TextView
+
+# Algorithm
+
+算法包，目前包含以下算法：
+
+1. 全排列算法
+
