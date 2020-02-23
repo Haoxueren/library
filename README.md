@@ -8,9 +8,15 @@
 
 # MyLog
 
-一款小巧强大的日志工具类，支持输入行号。
+一款小巧强大的日志工具类，支持输出行号。
 
-# java8
+# Java 8 Features
 
 Java8新特性相关的一些类，解决Android低版本不支持的问题。
+
+# RoundLayout
+
+添加了一些常用的圆角布局：RoundFrameLayout、RoundLinearLayout、RoundRelativeLayout、RoundTableLayout等。
+
+颜色背景或Shape背景支持分别设置四个角的radius，图片背景只支持设置总体radius。
 
