@@ -7,6 +7,10 @@
     <attr name="radiusBottomLeft" format="dimension" />
     <attr name="radiusBottomRight" format="dimension" />
 
+    <declare-styleable name="Divider">
+        <attr name="android:orientation" />
+    </declare-styleable>
+
     <declare-styleable name="RoundFrameLayout">
         <attr name="radius" />
         <attr name="radiusTopLeft" />
