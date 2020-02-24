@@ -8,14 +8,6 @@ import java.util.Arrays;
 public class Permutation {
 
     /**
-     * 测试
-     */
-    public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4};
-        permutation(array, 0);
-    }
-
-    /**
      * 对数组进行全排列
      */
     public static void permutation(int[] array, int index) {
