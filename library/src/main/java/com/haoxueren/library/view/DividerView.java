@@ -17,18 +17,18 @@ import com.haoxueren.library.R;
  * 自定义控件：分割线
  * 默认为水平方向，黑色，宽度为1px
  */
-public class Divider extends View {
+public class DividerView extends View {
 
     private int orientation;
 
-    public Divider(Context context) {
+    public DividerView(Context context) {
         this(context, null);
     }
 
-    public Divider(Context context, @Nullable AttributeSet attrs) {
+    public DividerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.Divider);
-        orientation = attributes.getInt(R.styleable.Divider_android_orientation, 0);
+        TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.DividerView);
+        orientation = attributes.getInt(R.styleable.DividerView_android_orientation, 0);
         attributes.recycle();
     }
 

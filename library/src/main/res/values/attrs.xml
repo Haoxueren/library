@@ -7,7 +7,16 @@
     <attr name="radiusBottomLeft" format="dimension" />
     <attr name="radiusBottomRight" format="dimension" />
 
-    <declare-styleable name="Divider">
+    <declare-styleable name="DateTextView">
+        <attr name="dateFormat" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="SuperTextView">
+        <attr name="numberFormat" format="string" />
+        <attr name="stringFormat" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="DividerView">
         <attr name="android:orientation" />
     </declare-styleable>
 
