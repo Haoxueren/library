@@ -1,4 +1,4 @@
-package com.haoxueren.library.view;
+package com.haoxueren.library.layout;
 
 import android.content.Context;
 import android.graphics.Color;

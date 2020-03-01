@@ -1,6 +1,5 @@
-package com.haoxueren.library.view.round;
+package com.haoxueren.library.layout.round;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;

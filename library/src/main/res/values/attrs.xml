@@ -7,6 +7,11 @@
     <attr name="radiusBottomLeft" format="dimension" />
     <attr name="radiusBottomRight" format="dimension" />
 
+    <declare-styleable name="PercentLayout_Layout">
+        <attr name="layout_xPercent" format="float" />
+        <attr name="layout_yPercent" format="float" />
+    </declare-styleable>
+
     <declare-styleable name="DateTextView">
         <attr name="dateFormat" format="string" />
     </declare-styleable>

@@ -1,7 +1,6 @@
-package com.haoxueren.library.view.round;
+package com.haoxueren.library.layout.round;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
