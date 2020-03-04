@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="radius" format="dimension" />
-    <attr name="radiusTopLeft" format="dimension" />
-    <attr name="radiusTopRight" format="dimension" />
-    <attr name="radiusBottomLeft" format="dimension" />
-    <attr name="radiusBottomRight" format="dimension" />
+    <declare-styleable name="DigitEditText">
+        <attr name="maxInteger" format="integer" />
+        <attr name="maxDecimal" format="integer" />
+    </declare-styleable>
 
     <declare-styleable name="PercentLayout_Layout">
         <attr name="layout_xPercent" format="float" />
@@ -24,6 +23,12 @@
     <declare-styleable name="DividerView">
         <attr name="android:orientation" />
     </declare-styleable>
+
+    <attr name="radius" format="dimension" />
+    <attr name="radiusTopLeft" format="dimension" />
+    <attr name="radiusTopRight" format="dimension" />
+    <attr name="radiusBottomLeft" format="dimension" />
+    <attr name="radiusBottomRight" format="dimension" />
 
     <declare-styleable name="RoundFrameLayout">
         <attr name="radius" />
