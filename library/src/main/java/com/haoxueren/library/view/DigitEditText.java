@@ -9,7 +9,6 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 
 import com.haoxueren.library.R;
-import com.haoxueren.library.log.MyLog;
 
 import java.util.Locale;
 
@@ -22,8 +21,6 @@ import java.util.Locale;
  * create by haomingliang on 2020/3/4
  */
 public class DigitEditText extends AppCompatEditText implements TextWatcher {
-
-    private int position = 0; // 超出当前限定的位数，删除新输入的数字
 
     private AttributeHolder holder;
 
@@ -77,7 +74,6 @@ public class DigitEditText extends AppCompatEditText implements TextWatcher {
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        this.position = start;
     }
 
     @Override
