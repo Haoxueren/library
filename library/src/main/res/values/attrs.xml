@@ -30,6 +30,10 @@
     <attr name="radiusBottomLeft" format="dimension" />
     <attr name="radiusBottomRight" format="dimension" />
 
+    <declare-styleable name="FilterEditText">
+        <attr name="filterRegex" format="string" />
+    </declare-styleable>
+
     <declare-styleable name="RoundImageLayout">
         <attr name="radius" />
     </declare-styleable>
