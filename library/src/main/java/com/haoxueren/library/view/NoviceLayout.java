@@ -9,19 +9,24 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 /**
  * 新手引导布局
+ * NoviceLayout.create(this).highLight(button1, button2, button3);
  * create by haomingliang on 2020/3/6
  */
 public class NoviceLayout extends FrameLayout {
 
-    private View highLightView;
     private Rect highLightRect;
     private Paint paint;
+
+    private View[] highLightViews;
+    private int position = 2;
 
     public NoviceLayout(Activity context) {
         this(context, null);
@@ -30,6 +35,7 @@ public class NoviceLayout extends FrameLayout {
     public NoviceLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.setBackgroundColor(0xb3006660);
+        addButton(context);
         highLightRect = new Rect();
         paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
@@ -37,25 +43,41 @@ public class NoviceLayout extends FrameLayout {
         this.setLayerType(LAYER_TYPE_SOFTWARE, null);
     }
 
+    private void addButton(Context context) {
+        Button button = new Button(context);
+        button.setText("我知道了");
+        this.addView(button);
+        FrameLayout.LayoutParams layoutParams = (LayoutParams) button.getLayoutParams();
+        layoutParams.width = LayoutParams.WRAP_CONTENT;
+        layoutParams.height = LayoutParams.WRAP_CONTENT;
+        layoutParams.gravity = Gravity.CENTER;
+        button.requestLayout();
+
+        button.setOnClickListener(v -> {
+            position = position + 1;
+            position = position % highLightViews.length;
+            this.invalidate();
+        });
+    }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         View parent = (View) this.getParent();
-        highLightView.getGlobalVisibleRect(highLightRect);
-        highLightView.setTranslationY(parent.getTop());
+        highLightViews[position].getGlobalVisibleRect(highLightRect);
+        highLightRect.offset(0, -parent.getTop());
         canvas.drawRect(highLightRect, paint);
     }
 
-    public static NoviceLayout with(Activity activity) {
+    public static NoviceLayout create(Activity activity) {
         FrameLayout rootLayout = activity.findViewById(android.R.id.content);
         NoviceLayout noviceLayout = new NoviceLayout(activity);
         rootLayout.addView(noviceLayout);
         return noviceLayout;
     }
 
-    public void highLight(View view) {
-        this.highLightView = view;
-        this.invalidate();
+    public void highLight(View... view) {
+        this.highLightViews = view;
     }
 
     public void dismiss() {
