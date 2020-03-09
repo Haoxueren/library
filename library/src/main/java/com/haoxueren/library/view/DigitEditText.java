@@ -35,14 +35,6 @@ public class DigitEditText extends AppCompatEditText implements TextWatcher {
         this.addTextChangedListener(this);
     }
 
-    public void setMaxInteger(int maxInteger) {
-        holder.setMaxInteger(maxInteger);
-    }
-
-    public void setMaxDecimal(int maxDecimal) {
-        holder.setMaxDecimal(maxDecimal);
-    }
-
     /**
      * 限制EditText输入，最多6位整数，4位小数
      */
@@ -59,15 +51,16 @@ public class DigitEditText extends AppCompatEditText implements TextWatcher {
             editable.delete(0, 1);
             return;
         }
-        // 最多输入m位整数(逐位删除)
+        // 从超出范围的第一个位置开始删除
         if (text.matches(holder.integerRegex)) {
-            editable.delete(0, 1);
+            int last = holder.maxInteger; // 第一个超出范围的整数的位置
+            editable.delete(last, last + 1);
             return;
         }
-        // 最多输入n位小数(逐位删除)
+        // 从超出范围的最后一个位置开始删除
         if (text.matches(holder.decimalRegex)) {
-            int last = length();
-            editable.delete(last - 1, last);
+            int last = this.length() - 1; // 最后一个超出范围的小数的位置
+            editable.delete(last, last + 1);
             return;
         }
     }
@@ -83,28 +76,21 @@ public class DigitEditText extends AppCompatEditText implements TextWatcher {
 
     class AttributeHolder {
 
+        private int maxInteger;
+        private int maxDecimal;
         private String integerRegex;
         private String decimalRegex;
 
         AttributeHolder(Context context, AttributeSet attrs) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DigitEditText);
             // 整数最大位数，默认为10
-            int maxInteger = typedArray.getInt(R.styleable.DigitEditText_maxInteger, 10);
+            maxInteger = typedArray.getInt(R.styleable.DigitEditText_maxInteger, 10);
             // 小数最大位数，默认为10
-            int maxDecimal = typedArray.getInt(R.styleable.DigitEditText_maxDecimal, 10);
+            maxDecimal = typedArray.getInt(R.styleable.DigitEditText_maxDecimal, 10);
             integerRegex = String.format(Locale.CHINA, "\\d{%d,}[0-9.]*", maxInteger + 1);
             decimalRegex = String.format(Locale.CHINA, "\\d+[.]\\d{%d,}", maxDecimal + 1);
             typedArray.recycle();
         }
-
-        private void setMaxInteger(int maxInteger) {
-            integerRegex = String.format(Locale.CHINA, "\\d{%d,}[0-9.]*", maxInteger + 1);
-        }
-
-        private void setMaxDecimal(int maxDecimal) {
-            decimalRegex = String.format(Locale.CHINA, "\\d+[.]\\d{%d,}", maxDecimal + 1);
-        }
     }
-
-
 }
+

@@ -1,4 +1,4 @@
-package com.haoxueren.library;
+package com.haoxueren.library.regex;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
