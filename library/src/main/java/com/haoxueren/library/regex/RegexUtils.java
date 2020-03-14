@@ -1,4 +1,4 @@
-package com.haoxueren.library.utils;
+package com.haoxueren.library.regex;
 
 public class RegexUtils {
 
