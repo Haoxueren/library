@@ -31,4 +31,20 @@ public class Base64Utils {
         byte[] decodeBytes = Base64.decode(contentBytes, Base64.DEFAULT);
         return new String(decodeBytes, StandardCharsets.UTF_8);
     }
+
+    /**
+     * 对文本进行Base64编码
+     */
+    public static String encode(byte[] content) throws Exception {
+        byte[] encodeBytes = Base64.encode(content, Base64.DEFAULT);
+        return new String(encodeBytes, StandardCharsets.UTF_8);
+    }
+
+    /**
+     * 将Base64解码为文本
+     */
+    public static String decode(byte[] content) {
+        byte[] decodeBytes = Base64.decode(content, Base64.DEFAULT);
+        return new String(decodeBytes, StandardCharsets.UTF_8);
+    }
 }
