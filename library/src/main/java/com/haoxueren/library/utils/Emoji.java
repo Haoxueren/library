@@ -27,6 +27,12 @@ public class Emoji {
     /**
      * 判断单个字符是否为Emoji表情
      * true=>emoji; false=>!emoji
+     * [0xE001,0xE05A]
+     * [0xE101,0xE15A]
+     * [0xE201,0xE253]
+     * [0xE301,0xE34D]
+     * [0xE401,0xE44C]
+     * [0xE501,0xE537]
      */
     private static boolean isEmoji(char codePoint) {
         return !((codePoint == 0x0)

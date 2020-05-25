@@ -67,9 +67,9 @@ public class SuperTextView extends AppCompatTextView implements TextWatcher {
                 this.setStringFormatText(text);
             } else {
                 // 4.两者均不为空
-                this.setStringFormatText(text);
+                this.setNumberFormatText(text);
                 String newText = this.getText().toString();
-                this.setNumberFormatText(newText);
+                this.setStringFormatText(newText);
             }
         }
     }
@@ -94,7 +94,8 @@ public class SuperTextView extends AppCompatTextView implements TextWatcher {
             return;
         }
         // 使用NumberFormat格式化
-        NumberFormat numberFormat = new DecimalFormat(holder.numberPattern);
+        DecimalFormat numberFormat = (DecimalFormat) DecimalFormat.getInstance();
+        numberFormat.applyPattern(holder.numberPattern);
         String formatText = numberFormat.format(new BigDecimal(text));
         this.setText(formatText);
     }
