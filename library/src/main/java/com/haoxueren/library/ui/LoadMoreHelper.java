@@ -2,6 +2,7 @@ package com.haoxueren.library.ui;
 
 
 import com.haoxueren.library.java8.Action;
+import com.haoxueren.library.java8.BiConsumer;
 import com.haoxueren.library.java8.Consumer;
 
 import java.util.List;
@@ -27,53 +28,53 @@ public class LoadMoreHelper<T> {
     /**
      * 下拉刷新时调用
      */
-    public void onRefresh(Consumer<Integer> request) {
-        request.accept(1);
+    public void onRefresh(BiConsumer<Integer, Integer> request) {
+        request.accept(1, size);
     }
 
     /**
      * 上拉加载时调用
      * 有更多数据时请求服务器，无更多数据时完成加载
      */
-    public void onLoadMore(Consumer<Integer> request, Action noMoreAction) {
+    public void onLoadMore(BiConsumer<Integer, Integer> request, Action noMore) {
         if (hasMoreData) {
             int tempPage = page + 1;
-            request.accept(tempPage);
+            request.accept(tempPage,size);
         } else {
-            noMoreAction.run();
+            noMore.run();
         }
     }
 
     /**
      * 数据加载成功后调用，需要指明是否为上拉加载
      */
-    public void onSuccess(List<T> newData, boolean isLoadMore, Consumer<List<T>> result) {
+    public void onSuccess(List<T> newData, boolean isLoadMore, Consumer<Boolean> hasMore) {
         if (isLoadMore) {
-            this.onLoadMoreSuccess(newData, result);
+            this.onLoadMoreSuccess(newData, hasMore);
         } else {
-            this.onRefreshSuccess(newData, result);
+            this.onRefreshSuccess(newData, hasMore);
         }
     }
 
     /**
      * 下拉刷新成功后调用
      */
-    private void onRefreshSuccess(List<T> newData, Consumer<List<T>> result) {
+    private void onRefreshSuccess(List<T> newData, Consumer<Boolean> hasMore) {
         hasMoreData = newData.size() == size; // 是否有更多数据
         page = 1;
         data.clear();
         data.addAll(newData);
-        result.accept(data);
+        hasMore.accept(hasMoreData);
     }
 
     /**
      * 上拉加载成功时调用
      */
-    private void onLoadMoreSuccess(List<T> newData, Consumer<List<T>> result) {
+    private void onLoadMoreSuccess(List<T> newData, Consumer<Boolean> hasMore) {
         hasMoreData = newData.size() == size; // 是否有更多数据
         page = newData.isEmpty() ? page : page + 1; // 页码加 1
         data.addAll(newData);
-        result.accept(data);
+        hasMore.accept(hasMoreData);
     }
 
 }

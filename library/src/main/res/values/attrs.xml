@@ -24,15 +24,15 @@
         <attr name="android:orientation" />
     </declare-styleable>
 
+    <declare-styleable name="FilterEditText">
+        <attr name="filterRegex" format="string" />
+    </declare-styleable>
+
     <attr name="radius" format="dimension" />
     <attr name="radiusTopLeft" format="dimension" />
     <attr name="radiusTopRight" format="dimension" />
     <attr name="radiusBottomLeft" format="dimension" />
     <attr name="radiusBottomRight" format="dimension" />
-
-    <declare-styleable name="FilterEditText">
-        <attr name="filterRegex" format="string" />
-    </declare-styleable>
 
     <declare-styleable name="RoundImageLayout">
         <attr name="radius" />
