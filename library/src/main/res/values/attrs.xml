@@ -62,5 +62,9 @@
         <attr name="radiusBottomRight" />
     </declare-styleable>
 
+    <declare-styleable name="SuperRecyclerView">
+        <attr name="emptyLayout" format="reference" />
+    </declare-styleable>
+
 
 </resources>
